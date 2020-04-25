@@ -2,8 +2,8 @@ version: '3.4'
 services:
   web:
     build: .
-    volumes:
-     - .:/usr/src/
+#    volumes:
+#     - .:/usr/src/
     depends_on:
       - hub
     environment:
@@ -16,7 +16,7 @@ services:
   hub:
     image: vladislavzubov/selenium-standalone-chromium-pi
     restart: always
-    container_name: selenium-standalone-chromium-pi
+    container_name: standalone-chromium-pi
 
     #container_name: selenium-chrome-standalone
 
