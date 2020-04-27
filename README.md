@@ -8,7 +8,9 @@ demon
 
 `docker-compose down`
 
-`sudo docker-compose --file docker-compose.test.yml run --rm web`
+`docker-compose --file docker-compose.test_standalone_chromePI.yml run --rm web`
+
+`docker-compose --file docker-compose.test_standalone_chrome.yml run --rm web`
 
 `docker-compose down`
 

@@ -2,11 +2,9 @@ import platform
 import os
 
 
-OPERATING_SYSTEM = 'Linux' if ((platform.machine() == 'x86_64') or
-                               ('arm' in platform.machine())) else 'Windows'
+OPERATING_SYSTEM = 'Linux' if (platform.system() != "Windows") else 'Windows'
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
 
 if 'DJANGO_DEBUG_FALSE' in os.environ:
     DEBUG = False

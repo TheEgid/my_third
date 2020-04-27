@@ -14,11 +14,10 @@ services:
 
 
   hub:
+    #image: selenium/standalone-chrome
     image: vladislavzubov/selenium-standalone-chromium-pi
     restart: always
-    container_name: standalone-chromium-pi
-
-    #container_name: selenium-chrome-standalone
+    container_name: selenium-chrome-standalone
 
     ports:
       - "4444:4444"

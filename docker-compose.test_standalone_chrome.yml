@@ -1,0 +1,24 @@
+version: '3.4'
+services:
+  web:
+    build: .
+#    volumes:
+#     - .:/usr/src/
+    depends_on:
+      - hub
+    environment:
+      DJANGO_TEST_PROCESSES: 1
+    entrypoint: ["./bin/test.sh"]
+    #command: python ./manage.py test functional_tests --parallel
+    command: pytest
+
+
+  hub:
+    image: selenium/standalone-chrome
+    restart: always
+    container_name: selenium-chrome-standalone
+
+    ports:
+      - "4444:4444"
+    volumes:
+      - /dev/shm:/dev/shm
