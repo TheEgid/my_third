@@ -1,28 +1,18 @@
-import os
-import socket
 import time
-
+import pytest
 from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 from selenium.common.exceptions import WebDriverException
-from selenium import webdriver
-from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
 from selenium.webdriver.common.keys import Keys
+import socket
+
 
 MAX_WAIT = 10
 
 
-class NewVisitorTest(StaticLiveServerTestCase):
+@pytest.mark.usefixtures("setup_browser")
+class TestExampleOne(StaticLiveServerTestCase):
     # Set host to externally accessible web server address
     host = socket.gethostbyname(socket.gethostname())
-
-    def setUp(self):
-        selenium_hub_url = 'http://hub:4444/wd/hub'
-        self.browser = webdriver.Remote(
-            command_executor=selenium_hub_url,
-            desired_capabilities=DesiredCapabilities.CHROME)
-
-    def tearDown(self):
-        self.browser.quit()
 
     def wait_for_row_in_list_table(self, row_text):
         start_time = time.time()
@@ -91,8 +81,8 @@ class NewVisitorTest(StaticLiveServerTestCase):
 
         # # We do a new browser session to make sure that no information
         # # of Edith's is coming through from cookies etc
-        self.tearDown()
-        self.setUp()
+        # self.tearDown()
+        # self.setUp()
 
         # Francis visits the home page. There is no sign of Edith's list
         self.browser.get(self.live_server_url)
