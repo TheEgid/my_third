@@ -2,7 +2,5 @@ version: '3.4'
 services:
   web:
     build: .
-    # ports: # overridden
-    # volumes: # overridden
-    entrypoint: ["./bin/entrypoint.sh"]
-    command: gunicorn --bind 0.0.0.0:8000 superlists.wsgi
+    ports:
+      - "80:80"

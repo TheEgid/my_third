@@ -8,10 +8,11 @@ services:
       - hub
     environment:
       DJANGO_TEST_PROCESSES: 1
-    entrypoint: ["./bin/test.sh"]
-    #command: python ./manage.py test functional_tests --parallel
-    command: pytest
 
+    command: bash -c "
+      dockerize -wait http://hub:4444  -timeout 20s
+      && pytest
+      "
 
   hub:
     image: selenium/standalone-chrome

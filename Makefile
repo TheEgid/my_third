@@ -1,8 +1,10 @@
 .PHONY: docs clean;
 
-#demon
-run:
+build:
 	docker-compose up --build -d
+
+run:
+	docker-compose up
 
 stop:
 	docker-compose down

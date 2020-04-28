@@ -14,15 +14,19 @@ COPY ./app/requirements.txt .
 
 RUN apt-get update && apt-get install -qy \
     apt-utils \
-    python3-psycopg2 \
-    libffi-dev
+    python3-psycopg2
+#    libffi-dev
 
-RUN pip install -r requirements.txt
-
+RUN pip3 install --upgrade pip
 
 ENV PYTHONUNBUFFERED 1
 
+RUN pip install -r requirements.txt
+
 COPY . /usr/src/
 
+RUN python manage.py makemigrations && python manage.py migrate
+
+EXPOSE 80
 
 CMD gunicorn --bind 0.0.0.0:80 superlists.wsgi
