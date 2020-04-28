@@ -1,5 +1,7 @@
 # MyThird
 
+make build
+
 make run
 
 make stop

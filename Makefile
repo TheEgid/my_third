@@ -1,10 +1,10 @@
 .PHONY: docs clean;
 
 build:
-	docker-compose up --build -d
+	docker-compose build
 
 run:
-	docker-compose up
+	docker-compose up -d
 
 stop:
 	docker-compose down
