@@ -9,7 +9,6 @@ run:
 stop:
 	docker-compose down
 
-
 ARCHI = "`dpkg --print-architecture`"
 
 test: SHELL:=/bin/bash
